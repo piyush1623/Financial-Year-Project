@@ -1,0 +1,61 @@
+1.Total Quantity Sold = SUM(Financial[Units Sold])
+
+2.Quantity Sold Last Month = CALCULATE(
+	                     SUM('Financial'[Units Sold]),
+	                     'Financial'[Date] IN { DATE(2014, 11, 1) }
+                             )
+
+3.Quantity Sold Last Year = CALCULATE(SUM('Financial'[Units Sold]), 'Financial'[Year] IN { 2013 })
+
+4.Average Quantity Sold per Day = AVERAGEX(
+	                          KEEPFILTERS(VALUES('Financial'[Date])),
+	                          CALCULATE(SUM('Financial'[Units Sold]))
+                                  )
+
+5.Quantity Sold in "Germany" = CALCULATE(
+	                       SUM('Financial'[Units Sold]),
+	                       'Financial'[Country] IN { "Germany" }
+                               )
+                                                 
+                      "Dell" = CALCULATE(SUM('Financial'[Units Sold]), 'Financial'[Product] IN { "Dell" })
+
+                       "HP"  = CALCULATE(SUM('Financial'[Units Sold]), 'Financial'[Product] IN { "HP" })
+
+6.Quantity Sold Two Month Ago = CALCULATE(
+	                        SUM('Financial'[Units Sold]),
+	                        'Calendar'[Date] IN { DATE(2014, 10, 1) }
+                                )
+
+7.Quantity Sold Two Quarters Ago = CALCULATE(
+	                           SUM('Financial'[Units Sold]),DATEADD(Financial[Date],-2,QUARTER))
+
+8.Last Month Profit = CALCULATE(
+	              SUM('Financial'[Profit]),
+	              'Financial'[Date] IN { DATE(2014, 11, 1) }
+                      )
+
+9.Profit Two Month Ago = CALCULATE(
+	                 SUM('Financial'[Profit]),
+	                 'Calendar'[Date] IN { DATE(2014, 10, 1) }
+                         )
+
+10.Last Month Cumulative Proft = (Profit RT =  VAR MaxDate = MAX ( 'Calendar'[Date] ) -- Saves the last visible date
+                                 RETURN
+                                 CALCULATE (
+                                 [Total Profit],            -- Computes Profit
+                                 'Calendar'[Date] <= MaxDate,   -- Where date is before the last visible date
+                                 ALL ( 'Calendar' )               -- Removes any other filters from Date
+                                 ))
+                                 (With this Formula now we represent the last month and last two month cumulative profit in graphical representation.)
+
+11.Total Profit Running Total in Date = CALCULATE(
+	                                SUM('Financial'[Profit]),
+	                                FILTER(
+		                        ALLSELECTED('Financial'[Date]),
+		                        ISONORAFTER('Financial'[Date], MAX('Financial'[Date]), DESC)
+	                                     )
+                                        )
+
+12.How To Apply Fiscal Year = IF(AND(Financial[Year] =2013,[Month Number]<=12),"FY14",
+                              IF(AND([Year] =2014,[Month Number]<=6),"FY14",
+                              IF(AND([Year] =2014,Financial[Month Number]<=12),"FY15"))) 

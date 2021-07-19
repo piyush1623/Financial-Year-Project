@@ -1,0 +1,11 @@
+1. Load all data in Power BI Desktop & check data anomalities, quality, profile the data & create a summary in document & update if required
+2. Remove the auto update data type & Check for headers
+3. Change data type to appropriate data type
+4. Add new column with age of cutomers
+5. Create a new column for full name of customers
+6. Create a new table as 'Total Orders' which should have all the orders from 'Order-1' & 'Order-2' tables
+7. Add Customers full name & Plant name in 'Total Orders' table.
+8. Create seperate columns for Year, month & date in orders table with all orders
+9. Create new aggregated table as 'Plant wise data' with Plant id, plant names,sum of Shipped qty & sum of Firm orders
+10. Create new aggregated table as Customer wise data' with Customer full name,sum of Shipped qty & sum of Firm orders
+11. Replace the Plant Name "Rich-Boss India Pvt Ltd. - Chirya" with "Rich-Boss India Pvt Ltd. - Chirya(New)". Add this step before step 7

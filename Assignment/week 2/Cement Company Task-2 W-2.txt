@@ -1,0 +1,11 @@
+Create a report with following details: -
+•	Add 4 different visuals on Page 1 (Pie, Bar, Column & Line)
+•	Add 1 built-in & 2 custom visuals on Page 2
+•	Add one slicer on Page 1 & sync it with Page-2
+•	Update the interaction among visuals on Page-1 in such a way that When you click on any part of Pie chart your data in Bar chart should not change
+•	Create Forecasting of Production for next 6 months with Average dotted line on Page-3
+•	Add Line chart on Page-4 where it should show data for only last 2 months of shipped quantity & add the firm orders of the same day in tooltip
+•	Create a hierarchy of State->City
+•	Create a visualization to show the shipped quantity by States & Cities (when drilled down). When you hover over a State or City, make sure it should show a page tooltip of shipped quantity by plants for that state or city
+•	Create a hierarchy of Year, month & date and create a visualization to show the shipped quantity by year, month & date (when drilled down)
+•	Make sure in the above-mentioned task the months are sorted in Fiscal year not the calendar year
